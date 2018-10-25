@@ -12,8 +12,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -22,12 +20,12 @@ import javax.validation.constraints.Size;
 
 /**
  *
- * @author LAB_SOFTWARE-DTI
+ * @author john
  */
 @Entity
 @Table(name = "cliente")
 @NamedQueries({
-    @NamedQuery(name = "Cliente.findAll", query = "SELECT e FROM Cliente e")})
+    @NamedQuery(name = "Cliente.findAll", query = "SELECT c FROM Cliente c")})
 public class Cliente implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -38,28 +36,31 @@ public class Cliente implements Serializable {
     private Integer idCliente;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 8)
+    @Size(min = 1, max = 10)
     @Column(name = "nombre")
     private String nombre;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 30)
+    @Column(name = "ruc")
+    private String ruc;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 20)
     @Column(name = "dni")
     private String dni;
-    @JoinColumn(name = "idPersona", referencedColumnName = "idPersona")
-    @ManyToOne(optional = false)
-    private Persona idPersona;
 
     public Cliente() {
     }
 
     public Cliente(Integer idCliente) {
-        this.idCliente= idCliente;
+        this.idCliente = idCliente;
     }
 
-    public Cliente(Integer idCliente, String nombre, String dni) {
+    public Cliente(Integer idCliente, String nombre, String ruc, String dni) {
         this.idCliente = idCliente;
         this.nombre = nombre;
+        this.ruc = ruc;
         this.dni = dni;
     }
 
@@ -79,20 +80,20 @@ public class Cliente implements Serializable {
         this.nombre = nombre;
     }
 
+    public String getRuc() {
+        return ruc;
+    }
+
+    public void setRuc(String ruc) {
+        this.ruc = ruc;
+    }
+
     public String getDni() {
         return dni;
     }
 
     public void setDni(String dni) {
-        this.dni = dni ;
-    }
-
-    public Persona getIdPersona() {
-        return idPersona;
-    }
-
-    public void setIdPersona(Persona idPersona) {
-        this.idPersona = idPersona;
+        this.dni = dni;
     }
 
     @Override

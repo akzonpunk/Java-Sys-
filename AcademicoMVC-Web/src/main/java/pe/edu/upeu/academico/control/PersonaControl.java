@@ -21,6 +21,7 @@ import org.springframework.web.servlet.view.RedirectView;
 import pe.edu.upeu.academico.modelo.Persona;
 import pe.edu.upeu.academico.modelo.Venta;
 import pe.edu.upeu.academico.servicio.PersonaServicioI;
+import pe.edu.upeu.academico.servicio.VentaServicioI;
 
 /**
  *
@@ -33,6 +34,9 @@ public class PersonaControl {
     private MessageSource messageSource;
     @Autowired
     PersonaServicioI personaServicioI;
+    
+    @Autowired
+    VentaServicioI ventaServicioI;
     
     @RequestMapping(value = "/locate", method = RequestMethod.GET)
     public String getLocatePage(){
@@ -70,8 +74,11 @@ public ModelAndView mainProducto(){
     return new ModelAndView("persona/mainProducto");
 }
 @RequestMapping(value = {"/ven" }, method = RequestMethod.GET)    
-public ModelAndView mainVenta(){
-    
+public ModelAndView mainVenta(Map<String,Object> model){
+    List<Venta> lista=ventaServicioI.listarEntidad();
+ 
+    model.put("ListaVenta", lista);
+   
     return new ModelAndView("persona/mainVenta");
 }
 
@@ -90,6 +97,12 @@ public ModelAndView eliminarPersona(HttpServletRequest r){
     personaServicioI.eliminarEntidad(idEntidad);
 return new ModelAndView(new RedirectView("/"));
 }
+//@RequestMapping(value = {"/elim" }, method = RequestMethod.GET)
+//public ModelAndView eliminarVenta(HttpServletRequest r){
+//    int idEntidad=Integer.parseInt(r.getParameter("id"));
+//    ventaServicioI.eliminarEntidad(idEntidad);
+//return new ModelAndView(new RedirectView("/ven"));
+//}
   
 @RequestMapping(value = {"/buscar"}, method = RequestMethod.POST)
 public  ModelAndView buscarEntidad(Locale locale, Map<String,Object> model, HttpServletRequest r){
@@ -109,8 +122,8 @@ public ModelAndView irFormulario(@ModelAttribute("modeloPersona")Persona persona
 return new ModelAndView("persona/formPersona");
 }
 
-@RequestMapping(value = "/formVenta", method = RequestMethod.GET)
-public ModelAndView irFormularioV(@ModelAttribute("modeloVenta")Venta venta,
+@RequestMapping(value = "/formVenta", method = RequestMethod.GET) 
+public ModelAndView irFormularioV(@ModelAttribute("modeloVenta") Venta venta,
         BindingResult result){
     
 return new ModelAndView("persona/formVenta");
@@ -121,6 +134,13 @@ public ModelAndView guardarEntidad(@ModelAttribute("modeloPersona")Persona perso
         BindingResult result){
         personaServicioI.guardarEntidad(persona);
     return new ModelAndView(new RedirectView("/"));
+}
+
+@RequestMapping(value = "/guardarVenta", method = RequestMethod.POST)
+public ModelAndView guardarEntidadV(@ModelAttribute("modeloVenta") Venta venta,
+        BindingResult result, HttpServletRequest r){
+        ventaServicioI.guardarEntidad(venta);
+    return new ModelAndView(new RedirectView("/ven"));
 }
 
 }

@@ -1,10 +1,12 @@
-pe\edu\upeu\academico\modelo\Venta.class
-pe\edu\upeu\academico\dao\PersonaDaoI.class
-pe\edu\upeu\academico\modelo\Cliente.class
-pe\edu\upeu\academico\SysDataAccess.class
+pe\edu\upeu\academico\dao\VentaDaoImpl.class
 pe\edu\upeu\academico\dao\PersonaDaoImpl.class
 pe\edu\upeu\academico\modelo\Producto.class
 pe\edu\upeu\academico\modelo\Profesor.class
 pe\edu\upeu\academico\modelo\Persona.class
 pe\edu\upeu\academico\HibernateConfiguration.class
 pe\edu\upeu\academico\modelo\Estudiante.class
+pe\edu\upeu\academico\modelo\Venta.class
+pe\edu\upeu\academico\dao\PersonaDaoI.class
+pe\edu\upeu\academico\modelo\Cliente.class
+pe\edu\upeu\academico\SysDataAccess.class
+pe\edu\upeu\academico\dao\VentaDaoI.class

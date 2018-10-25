@@ -1,2 +1,4 @@
 pe\edu\upeu\academico\servicio\PersonaServicioImpl.class
+pe\edu\upeu\academico\servicio\VentaServicioImpl.class
 pe\edu\upeu\academico\servicio\PersonaServicioI.class
+pe\edu\upeu\academico\servicio\VentaServicioI.class

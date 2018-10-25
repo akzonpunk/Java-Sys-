@@ -20,12 +20,10 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import lombok.Getter;
-import lombok.Setter;
 
 /**
  *
- * @author LAB_SOFTWARE-DTI
+ * @author john
  */
 @Entity
 @Table(name = "persona")
@@ -38,32 +36,26 @@ public class Persona implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "idPersona")
-    @Getter @Setter
     private Integer idPersona;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 30)
     @Column(name = "nombre")
-    @Getter @Setter
     private String nombre;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 60)
     @Column(name = "apellidos")
-    
-    @Getter @Setter
     private String apellidos;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 10)
     @Column(name = "dni")
-    @Getter @Setter
     private String dni;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 10)
     @Column(name = "telefono")
-    @Getter @Setter
     private String telefono;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPersona")
     private Collection<Estudiante> estudianteCollection;
@@ -85,7 +77,45 @@ public class Persona implements Serializable {
         this.telefono = telefono;
     }
 
-    
+    public Integer getIdPersona() {
+        return idPersona;
+    }
+
+    public void setIdPersona(Integer idPersona) {
+        this.idPersona = idPersona;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellidos() {
+        return apellidos;
+    }
+
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
+    }
+
+    public String getDni() {
+        return dni;
+    }
+
+    public void setDni(String dni) {
+        this.dni = dni;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
 
     public Collection<Estudiante> getEstudianteCollection() {
         return estudianteCollection;

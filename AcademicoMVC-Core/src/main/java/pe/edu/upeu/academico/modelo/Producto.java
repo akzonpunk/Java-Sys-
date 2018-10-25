@@ -6,9 +6,7 @@
 package pe.edu.upeu.academico.modelo;
 
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,16 +14,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import lombok.Getter;
-import lombok.Setter;
 
 /**
  *
- * @author LAB_SOFTWARE-DTI
+ * @author john
  */
 @Entity
 @Table(name = "producto")
@@ -38,37 +33,27 @@ public class Producto implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "idProducto")
-    @Getter @Setter
     private Integer idProducto;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 30)
     @Column(name = "nombre")
-    @Getter @Setter
     private String nombre;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 60)
     @Column(name = "marca")
-    
-    @Getter @Setter
     private String marca;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 10)
     @Column(name = "codigo")
-    @Getter @Setter
     private String codigo;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 10)
     @Column(name = "telefono")
-    @Getter @Setter
     private String telefono;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idProducto")
-    private Collection<Estudiante> estudianteCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idProducto")
-    private Collection<Profesor> profesorCollection;
 
     public Producto() {
     }
@@ -77,7 +62,7 @@ public class Producto implements Serializable {
         this.idProducto = idProducto;
     }
 
-    public Producto(Integer idProducto, String nombre, String apellidos, String dni, String telefono) {
+    public Producto(Integer idProducto, String nombre, String marca, String codigo, String telefono) {
         this.idProducto = idProducto;
         this.nombre = nombre;
         this.marca = marca;
@@ -85,22 +70,44 @@ public class Producto implements Serializable {
         this.telefono = telefono;
     }
 
-    
-
-    public Collection<Estudiante> getEstudianteCollection() {
-        return estudianteCollection;
+    public Integer getIdProducto() {
+        return idProducto;
     }
 
-    public void setEstudianteCollection(Collection<Estudiante> estudianteCollection) {
-        this.estudianteCollection = estudianteCollection;
+    public void setIdProducto(Integer idProducto) {
+        this.idProducto = idProducto;
     }
 
-    public Collection<Profesor> getProfesorCollection() {
-        return profesorCollection;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setProfesorCollection(Collection<Profesor> profesorCollection) {
-        this.profesorCollection = profesorCollection;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
 
     @Override

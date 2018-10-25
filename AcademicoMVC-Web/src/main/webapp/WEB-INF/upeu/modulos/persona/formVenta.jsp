@@ -10,6 +10,17 @@
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
+    <section class="content-header">
+    <h1>
+      Page Header
+      <small>Optional description</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+      <li class="active">Here</li>
+      <li class="active"><a href="/ven" class="btn btn-warning">Ir Venta</a></li>
+    </ol>
+  </section>
 <!-- Main content -->
 <section class="content">    
     <div class="box box-primary">
@@ -34,10 +45,7 @@
                     <frm:label path="codigo" class="col-sm-2 control-label">Codigo:</frm:label>
                     <div class="col-sm-10"><frm:input path="codigo" class="form-control" /></div>
                 </div>
-                <div class="form-group" >
-                    <frm:label path="telefono" class="col-sm-2 control-label">Telefono:</frm:label>
-                    <div class="col-sm-10"><frm:input path="telefono" class="form-control" /></div>
-                </div>
+          
 
                 
 
